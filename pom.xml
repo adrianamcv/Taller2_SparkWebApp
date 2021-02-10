@@ -83,11 +83,33 @@
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.1.1</version>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.8.0</version>
           <configuration>
-            <show>public</show>
-            <outputDirectory>src\main</outputDirectory>
+            <source>1.8</source>
+            <target>1.8</target>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>3.0.1</version>
+          <executions>
+            <execution>
+              <id>copy-dependencies</id>
+              <phase>package</phase>
+              <goals><goal>copy-dependencies</goal></goals>
+            </execution>
+          </executions>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <version>3.2.0</version>
+          <configuration>
+            <show>private</show>
+            <nohelp>true</nohelp>
+            <reportOutputDirectory>${basedir}/javaDoc</reportOutputDirectory>
           </configuration>
       </plugin>
       </plugins>
